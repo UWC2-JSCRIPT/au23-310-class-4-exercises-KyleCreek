@@ -12,14 +12,14 @@ const getDeck = () => {
       // for each loop, push a card object to the deck
 
       // special cases for when j > 10
-      const displayVal = ''
-
-      switch (j) {
+      let displayVal='';
+	  // Note: Had to revise "Switch" to "true" from "J" to Get this to work. 
+      switch (true) {
         case j === 1:
           displayVal = 'Ace'
           break
         case j > 1 && j <= 10:
-          displayVal = j
+          displayVal = j.toString();
           break
         case j === 11:
           displayVal = 'Jack'
@@ -39,12 +39,13 @@ const getDeck = () => {
       }
 
       if (displayVal === 'Ace') {
-        card.val = 11
+        card.val = 1
       }
 
       deck.push(card)
     }
   }
+  return deck;
 }
 
 // CHECKS
@@ -66,3 +67,5 @@ const cardHasDisplayVal =
   randomCard.displayVal &&
   typeof randomCard.displayVal === 'string'
 console.log(`Random card has display value? ${cardHasDisplayVal}`)
+
+console.log(deck);
