@@ -1,4 +1,4 @@
-// const blackjackDeck = getDeck();
+import getDeck from "createCardDeck.js"
 function shuffleDeck(deckArray) {
     // Create a Deck to Shuffle parts to
     let shuffledDeck = []
@@ -19,6 +19,9 @@ function shuffleDeck(deckArray) {
         }
         return shuffledDeck
 }
+
+const blackjackDeck = shuffleDeck(getDeck());
+
 // /**
 //  * Represents a card player (including dealer).
 //  * @constructor
@@ -30,9 +33,10 @@ class CardPlayer {
         this.hand = []
     }
     // This is where I will Create the Function
-    //drawCard(){
+    drawCard(){
         // Pop a Card From the Deck and append it to "thishand"
-    //}
+        this.hand.push(blackjackDeck.pop());
+    }
 
 }; 
 
@@ -40,6 +44,9 @@ class CardPlayer {
 const dealer = new CardPlayer('Dealer');
 const player = new CardPlayer('Player');
 
+// --Testing Values
+dealer.drawCard();
+dealer.drawCard();
 
 // /**
 //  * Calculates the score of a Blackjack hand
@@ -48,10 +55,22 @@ const player = new CardPlayer('Player');
 //  * @returns {number} blackJackScore.total
 //  * @returns {boolean} blackJackScore.isSoft
 //  */
-// const calcPoints = (hand) => {
-//   // CREATE FUNCTION HERE
+const calcPoints = (hand) => {
+    // Create a card Object
+    const blackJackScore = {total: 0, isSoft: false};
+    // For Loop Will Go over each Value
+    for (let i = 0; i < hand.length; i++){
+        // Loop Logic Goes Here
+        // Logic if Hand Is Currently Soft
+        // Logic if Card Is Ace
+        // Logic if Card is NOT Soft and Not Ace
+    }
+    
+    
+    
+}
 
-// }
+let test = calcPoints(dealer.hand);
 
 // /**
 //  * Determines whether the dealer should draw another card.
