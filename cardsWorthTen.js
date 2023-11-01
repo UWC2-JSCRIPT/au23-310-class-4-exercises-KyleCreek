@@ -22,9 +22,12 @@ const cards = [
  * @return {string} displayVal
  */
 const cardsWorthTen = cards => {
-    let newCards = cards.filter((cards) => cards.val >= 10);
-    console.log(newCards);
-
+    let displayVal = ''
+    // The Below REsults in an Array of Objects. 
+    let newCards = cards.filter((card) => card.val === 10);
+    let stringCards = newCards.map(card => card.displayVal);
+    console.log(stringCards);
+    return stringCards.join(',');
 };
 
 console.log(cardsWorthTen(cards));
