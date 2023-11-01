@@ -10,26 +10,27 @@ const getDeck = () => {
     // create an array of 13 objects
     for (let j = 1; j <= 13; j++) {
       // for each loop, push a card object to the deck
-
       // special cases for when j > 10
-      let displayVal='';
+      let displayVal;
 	  // Note: Had to revise "Switch" to "true" from "J" to Get this to work. 
+    // Reference: https://stackoverflow.com/questions/51846300/how-to-use-switch-statement-inside-for-loop
       switch (true) {
         case j === 1:
           displayVal = 'Ace'
-          break
+          break;
         case j > 1 && j <= 10:
           displayVal = j.toString();
-          break
+          console.log("middle");
+          break;
         case j === 11:
           displayVal = 'Jack'
-          break
+          break;
         case j === 12:
           displayVal = 'Queen'
-          break
+          break;
         case j === 13:
           displayVal = 'King'
-          break
+          break;
       }
 
       const card = {
@@ -39,7 +40,7 @@ const getDeck = () => {
       }
 
       if (displayVal === 'Ace') {
-        card.val = 1
+        card.val = 11;
       }
 
       deck.push(card)

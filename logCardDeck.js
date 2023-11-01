@@ -59,15 +59,21 @@ const cards = [
  * @param {array} deck A deck of cards
  */
 const logCardDeck = deck => {
-	let i = 0;
-	while (i < deck.length){
-		let value = deck[i]['val'];
-		let display = deck[i]['displayVal'];
-		let suit = deck[i]['suit'];
-		console.log(`Value: ${value} | Display Value: ${display} | Suit: ${suit}`);
-		i++;
-	}
+
+  // Simplified Vesion of the Below:
+  for (card of deck){
+    console.log("Value | ", card['val'], " Display Value | ", card['displayVal'], " Suit | ", card['suit']);
+  }
+
+  //let i = 0;
+	//while (i < deck.length){
+	//	let value = deck[i]['val'];
+	//	let display = deck[i]['displayVal'];
+	//	let suit = deck[i]['suit'];
+	//	console.log(`Value: ${value} | Display Value: ${display} | Suit: ${suit}`);
+	//	i++;
+	//}
 	
 	
 };
-//logCardDeck(cards);
+logCardDeck(cards);

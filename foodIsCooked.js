@@ -9,7 +9,7 @@ const foodIsCooked = function(kind, internalTemp, doneness) {
   // Write function HERE
   // Chicken is Cooked at 165 Degrees Farenheit
   // Beef - Rare: 125
-  // Beef - Medium: 138
+  // Beef - Medium: 135
   // Beef - Well: 155
   // Chicken Use Case
   if (kind == 'chicken') {
@@ -22,14 +22,14 @@ const foodIsCooked = function(kind, internalTemp, doneness) {
 	
   };
   // Beef Use Case
-  if (kind == 'beef'){
-	  if (doneness == 'well' && internalTemp > 154){
+  if (kind === 'beef'){
+	  if (doneness === 'well' && internalTemp > 154){
 	  return true;
 	  }
-	  if (doneness == 'medium' && internalTemp > 137){
+	  if (doneness === 'medium' && internalTemp > 135){
 		  return true;
 	  }
-	  if (doneness == 'rare' && internalTemp > 124){
+	  if (doneness === 'rare' && internalTemp > 124){
 	  return true;
 	  }
 	  else{
