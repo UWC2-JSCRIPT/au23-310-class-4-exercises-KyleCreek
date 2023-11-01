@@ -1,5 +1,24 @@
 // const blackjackDeck = getDeck();
-
+function shuffleDeck(deckArray) {
+    // Create a Deck to Shuffle parts to
+    let shuffledDeck = []
+    // Fill the Shuffled Deck
+    for (let i=0; i < 52; i++){
+        shuffledDeck.push(0);
+    }
+    
+    let counter = 0;
+    while (counter < 52){
+        // Generate a Random index 
+        let index = Math.floor(Math.random()*shuffledDeck.length);
+        if (shuffledDeck[index] === 0){
+            let temp = deckArray.pop()
+            shuffledDeck[index] = temp;
+            counter += 1
+        }
+        }
+        return shuffledDeck
+}
 // /**
 //  * Represents a card player (including dealer).
 //  * @constructor
