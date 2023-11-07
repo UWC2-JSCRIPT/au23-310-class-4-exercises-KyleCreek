@@ -156,14 +156,12 @@ const calcPoints = (hand) => {
 const dealerShouldDraw = (dealerHand) => {
     // Utilize the calcPoints to Determine the Dealer's Score
     let scoreObject = calcPoints(dealerHand);
-    console.log("Dealer Hand in Dealer Should Draw", scoreObject);
     // If the dealer's hand is 16 points or less, the dealer must draw another card
     if (scoreObject.total <= 16){
         return true;
     }
     // If the dealer's hand is exactly 17 points, and the dealer has an Ace valued at 11, the dealer must draw another card
-    if (scoreObject.total === 17){
-        // -- To Do: Determine how to handle the Ace in the Hand. 
+    else if (scoreObject.total === 17 && dealerHand.isSoft === true){
         return true;
     }
     // If the dealer's hand is 17 points or more, the dealer will end her turn
