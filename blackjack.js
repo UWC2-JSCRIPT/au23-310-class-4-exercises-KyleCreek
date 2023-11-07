@@ -112,40 +112,57 @@ const calcPoints = (hand) => {
     console.log("Calculating Points...");
     // Create a card Object
     const blackJackScore = {total: 0, isSoft: false};
-    // For Loop Will Go over each Value
-
-    // Failed Hand Draw 4 - 11 - 10 - 3 Shows as a Bust
-    for (let i = 0; i < hand.length; i++){
-        // Default is to just calc the values
-        console.log(hand[i]);
-        // Need to see if Adding the Card will make us Bust. Then need to Explore
-        // If there is an Ace to make it better. 
-        if (blackJackScore.total + hand[i].val > 21){
-            //Check if Card is Ace
-            // We can treat the Ace as a (1) here as opposed to Treating it like an 11. 
-            if (hand[i].displayVal == 'Ace'){
-                blackJackScore.total += 1;
-                blackJackScore.isSoft = true;
-            }
-            // If It is not an Ace then we Just need to Add the value
-            else{
-                blackJackScore.total += hand[i].val;
-            }
-        }
-        // If there is no Ace, then just add the value to the hand. 
-        else{
-            blackJackScore.total += hand[i].val;
-        }
-
-    }
-    
-    
+	// Determine How Many Aces are in the hand
+	let aceCount = 0;
+	for (let i = 0; i < hand.length; i ++){
+		if (hand[i].displayVal === 'Ace'){
+			aceCount += 1
+		}
+	}
+	// If there are No Aces, I Don't Have to do Anything Special with the Score.
+	if (aceCount === 0){
+		for (let j = 0; j < hand.length; j++){
+			blackJackScore.total += hand[j].val;
+		}
+		blackJackScore.isSoft = false;
+	}
+	
+	else {
+		// Add the Score of Cars that are NOT Aces firstChild
+		for (let k = 0; k < hand.length; k++){
+			if (hand[k].displayVal != 'Ace'){
+				blackJackScore.total += hand[k].val;
+			}
+		console.log(blackJackScore.total, "total before aces")
+		console.log("num aces", aceCount);
+		}
+		
+		// If the Score >= 11, All Aces Must Be Counted As one
+		if (blackJackScore.total >= 11){
+			blackJackScore.total += aceCount;
+			blackJackScore.isSoft = false;
+		}
+		// If the Score <= 10 AND there is only One Ace, Count the Ace As 11
+		else if (blackJackScore.total <= 10 && aceCount == 1){
+			blackJackScore.total += 11;
+			blackJackScore.isSoft = true;
+		}
+		
+		// If the Score <= 10 And there are more than One Ace, Calculate if you treat as 11
+		else if (blackJackScore.total + (11*(aceCount-1)) <= 21){
+			blackJackScore.total += 11;
+			blackJackScore.total += (aceCount -1);
+			blackJackScore.isSoft = true;
+		}
+		else{
+			blackJackScore.total += aceCount;
+			blackJackScore.isSoft = false;
+		}
+		
+	}
     return blackJackScore;
-    
 }
 
-//let test = calcPoints(dealer.hand);
-//console.log(test);
 
 // /**
 //  * Determines whether the dealer should draw another card.
